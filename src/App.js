@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import Map, {Marker} from 'react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
+import data from "./data/historical-events.json";
 
 function App() {
+  const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
+  console.info('mapbox token is ' + MAPBOX_TOKEN); 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Map
+      initialViewState={{
+        latitude: 41.5801,
+        longitude: -71.4774,
+        zoom: 8
+      }}
+      style={{width: "100vw", height: "100vh"}}
+      mapStyle="mapbox://styles/mapbox/streets-v9"
+      mapboxAccessToken={MAPBOX_TOKEN}
+      >
+      {data.events.map(event =>(
+        <Marker key={event.eventId} 
+          latitude={event.coordinates[0]} 
+          longitude={event.coordinates[1]}>
+            <button class="marker-btn">
+              <img src={event.img} alt="event icon"/>
+            </button>
+        </Marker>
+      ))}
+    </Map>
   );
 }
 

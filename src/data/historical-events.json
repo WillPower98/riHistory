@@ -1,0 +1,32 @@
+{
+    "events": [
+        {
+            "eventId": 1,
+            "eventDescription": "founding of first trading post",
+            "date": "1622",
+            "coordinates": [41.730498165464326, -71.28064142627254],
+            "img": "https://www.northwindprints.com/p/473/colonial-trading-post-kent-island-maryland-5886823.jpg.webp"
+        },
+        {
+            "eventId": 2,
+            "eventDescription": "Roger Williams founded Providence Plantations",
+            "date": "1636",
+            "coordinates": [41.824850435663734, -71.41494412291405],
+            "img": "https://upload.wikimedia.org/wikipedia/commons/5/52/Providence_1650_by_Jean_Blackburn.jpg"
+        },
+        {
+            "eventId": 3,
+            "eventDescription": "Massachusetts dissenters settled Aquidneck Island",
+            "date": "1637",
+            "coordinates": [41.522961162460554, -71.26404276892666],
+            "img": "https://eastgreenwichnews.com/wp-content/uploads/2020/06/roger-williams-Welcome_Colony.jpg"
+        },
+        {
+            "eventId": 4,
+            "eventDescription": "Great Swamp Fight. Slaughter of Narragansetts Village",
+            "date": "1675",
+            "coordinates": [41.4018930007319, -71.46501812064355],
+            "img": "https://upload.wikimedia.org/wikipedia/en/d/d8/Great_Swamp_Fight_painting.jpg"
+        }
+    ]
+}   
