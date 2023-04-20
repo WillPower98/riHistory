@@ -1,13 +1,15 @@
-import * as React from 'react';
-import Map, {Marker} from 'react-map-gl';
+import React, { useState } from 'react';
+import ReactMapGL, {Marker, Popup} from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import data from "./data/historical-events.json";
 
 function App() {
   const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
+  const [selectedEvent, setSelectedEvent] = useState(null);
   console.info('mapbox token is ' + MAPBOX_TOKEN); 
+
   return (
-    <Map
+    <ReactMapGL
       initialViewState={{
         latitude: 41.5801,
         longitude: -71.4774,
@@ -21,12 +23,28 @@ function App() {
         <Marker key={event.eventId} 
           latitude={event.coordinates[0]} 
           longitude={event.coordinates[1]}>
-            <button class="marker-btn">
-              <img src={event.img} alt="event icon"/>
+            <button className="marker-btn"
+            onClick={e => {
+              e.preventDefault();
+              setSelectedEvent(event);
+            }}>
+            <img src={event.img} alt="event icon"/>
             </button>
         </Marker>
       ))}
-    </Map>
+  
+      {selectedEvent ? (
+        <Popup 
+          latitude={selectedEvent.coordinates[0]} 
+          longitude={selectedEvent.coordinates[1]}
+          onClose={ ()=> { setSelectedEvent(null); }}>
+          <div>
+            {console.info("over here")}
+            <p>{selectedEvent.eventDescription}</p>
+          </div>
+        </Popup>
+      ) : null}
+    </ReactMapGL>
   );
 }
 
